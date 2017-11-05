@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatDialog;
 import android.support.v7.widget.AppCompatEditText;
 import android.view.View;
 
-import com.github.angads25.roomexample.dao.AppDBHandler;
-import com.github.angads25.roomexample.dao.AppDao;
 import com.github.angads25.roomexample.interfaces.DataCallbackListener;
 import com.github.angads25.roomexample.model.Todo;
 
@@ -75,11 +73,9 @@ public class CreateTodoDialog extends AppCompatDialog implements View.OnClickLis
                     todo.timeStamp = System.currentTimeMillis();
                     todo.todoTitle = edtTitle.getText().toString();
                     todo.todoText = edtText.getText().toString();
-                    final AppDao dao = AppDBHandler.getInstance(getContext()).getAppDao();
                     Thread T1 = new Thread(new Runnable() {
                         @Override
                         public void run() {
-                            dao.insertTodo(todo);
                             dataCallbackListener.onDataReceived(todo);
                         }
                     });
@@ -88,11 +84,9 @@ public class CreateTodoDialog extends AppCompatDialog implements View.OnClickLis
                     todo.timeStamp = System.currentTimeMillis();
                     todo.todoTitle = edtTitle.getText().toString();
                     todo.todoText = edtText.getText().toString();
-                    final AppDao dao = AppDBHandler.getInstance(getContext()).getAppDao();
                     Thread T1 = new Thread(new Runnable() {
                         @Override
                         public void run() {
-                            dao.updateTodo(todo);
                             dataCallbackListener.onDataReceived(todo);
                         }
                     });

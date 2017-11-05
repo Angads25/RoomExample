@@ -14,14 +14,15 @@ import com.github.angads25.roomexample.model.Todo;
  * </p>
  */
 
-public class ViewTodoDialog extends AppCompatDialog implements View.OnClickListener {
+class ViewTodoDialog extends AppCompatDialog implements View.OnClickListener {
     private Todo todo;
 
-    public ViewTodoDialog(Context context, Todo todo) {
+    ViewTodoDialog(Context context, Todo todo) {
         super(context, R.style.DialogTheme);
         this.todo = todo;
     }
 
+    @SuppressWarnings("ConstantConditions")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

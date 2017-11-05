@@ -11,8 +11,6 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import com.github.angads25.roomexample.adapter.TodoListAdapter;
-import com.github.angads25.roomexample.dao.AppDBHandler;
-import com.github.angads25.roomexample.dao.AppDao;
 import com.github.angads25.roomexample.interfaces.DataCallbackListener;
 import com.github.angads25.roomexample.interfaces.OnItemClickListener;
 import com.github.angads25.roomexample.interfaces.OnItemLongClickListener;
@@ -46,24 +44,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         layoutManager = new StaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
-        final AppDao dao = AppDBHandler.getInstance(getApplicationContext()).getAppDao();
-
         todoListAdapter = new TodoListAdapter(MainActivity.this, todos);
         recyclerView.setAdapter(todoListAdapter);
-
-        Thread T1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                todos.addAll(dao.getAllTodos());
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        todoListAdapter.notifyItemRangeInserted(0, todos.size());
-                    }
-                });
-            }
-        });
-        T1.start();
 
         findViewById(R.id.action_create).setOnClickListener(this);
 
@@ -110,11 +92,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         break;
                     }
                     case 1: {
-                        final AppDao dao = AppDBHandler.getInstance(getApplicationContext()).getAppDao();
                         Thread T1 = new Thread(new Runnable() {
                             @Override
                             public void run() {
-                                dao.deleteTodo(todos.get(position));
                                 todos.remove(position);
                                 runOnUiThread(new Runnable() {
                                     @Override
