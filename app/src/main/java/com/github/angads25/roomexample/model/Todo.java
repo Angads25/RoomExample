@@ -8,11 +8,43 @@ package com.github.angads25.roomexample.model;
 
 public class Todo {
 
-    public long _id;
+    private long _id;
 
-    public String todoTitle;
+    private String todoTitle;
 
-    public String todoText;
+    private String todoText;
 
-    public long timeStamp;
+    private long timeStamp;
+
+    public long get_id() {
+        return _id;
+    }
+
+    public void set_id(long _id) {
+        this._id = _id;
+    }
+
+    public String getTodoTitle() {
+        return todoTitle;
+    }
+
+    public void setTodoTitle(String todoTitle) {
+        this.todoTitle = todoTitle;
+    }
+
+    public String getTodoText() {
+        return todoText;
+    }
+
+    public void setTodoText(String todoText) {
+        this.todoText = todoText;
+    }
+
+    public long getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(long timeStamp) {
+        this.timeStamp = timeStamp;
+    }
 }

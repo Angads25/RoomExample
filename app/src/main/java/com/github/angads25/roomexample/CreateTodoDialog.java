@@ -42,8 +42,8 @@ public class CreateTodoDialog extends AppCompatDialog implements View.OnClickLis
         edtText = findViewById(R.id.edt_text);
 
         if(todo != null) {
-            edtTitle.setText(todo.todoTitle);
-            edtText.setText(todo.todoText);
+            edtTitle.setText(todo.getTodoTitle());
+            edtText.setText(todo.getTodoText());
         }
         findViewById(R.id.action_cancel).setOnClickListener(this);
         findViewById(R.id.action_save).setOnClickListener(this);
@@ -69,10 +69,10 @@ public class CreateTodoDialog extends AppCompatDialog implements View.OnClickLis
 
                 if(this.todo == null) {
                     todo = new Todo();
-                    todo._id = System.currentTimeMillis();
-                    todo.timeStamp = System.currentTimeMillis();
-                    todo.todoTitle = edtTitle.getText().toString();
-                    todo.todoText = edtText.getText().toString();
+                    todo.set_id(System.currentTimeMillis());
+                    todo.setTimeStamp(System.currentTimeMillis());
+                    todo.setTodoTitle(edtTitle.getText().toString());
+                    todo.setTodoText(edtText.getText().toString());
                     Thread T1 = new Thread(new Runnable() {
                         @Override
                         public void run() {
@@ -81,9 +81,9 @@ public class CreateTodoDialog extends AppCompatDialog implements View.OnClickLis
                     });
                     T1.start();
                 } else {
-                    todo.timeStamp = System.currentTimeMillis();
-                    todo.todoTitle = edtTitle.getText().toString();
-                    todo.todoText = edtText.getText().toString();
+                    todo.setTimeStamp(System.currentTimeMillis());
+                    todo.setTodoTitle(edtTitle.getText().toString());
+                    todo.setTodoText(edtText.getText().toString());
                     Thread T1 = new Thread(new Runnable() {
                         @Override
                         public void run() {
