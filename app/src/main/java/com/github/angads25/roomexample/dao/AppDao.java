@@ -23,6 +23,9 @@ public interface AppDao {
     @Query("Select * from " + AppConstants.DB_NAME + " order by time desc")
     List<Todo> getAllTodos();
 
+    @Query("Select * from " + AppConstants.DB_NAME + " where _id = :id order by time desc")
+    Todo getTodos(String id);
+
     @Insert
     void insertTodo(Todo todo);
 
