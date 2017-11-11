@@ -14,16 +14,16 @@ import android.arch.persistence.room.PrimaryKey;
 public class Todo {
 
     @PrimaryKey
-    public long _id;
+    private long _id;
 
     @ColumnInfo(name = "title")
-    public String todoTitle;
+    private String todoTitle;
 
     @ColumnInfo(name = "text")
-    public String todoText;
+    private String todoText;
 
     @ColumnInfo(name = "time")
-    public long timeStamp;
+    private long timeStamp;
 
     public long get_id() {
         return _id;

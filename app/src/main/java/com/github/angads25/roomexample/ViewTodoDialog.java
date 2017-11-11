@@ -30,8 +30,8 @@ public class ViewTodoDialog extends AppCompatDialog implements View.OnClickListe
         AppCompatTextView tvTitle = findViewById(R.id.tv_title);
         AppCompatTextView tvText = findViewById(R.id.tv_text);
 
-        tvTitle.setText(todo.todoTitle);
-        tvText.setText(todo.todoText);
+        tvTitle.setText(todo.getTodoTitle());
+        tvText.setText(todo.getTodoText());
         findViewById(R.id.action_close).setOnClickListener(this);
     }
 
